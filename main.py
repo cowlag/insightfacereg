@@ -19,13 +19,17 @@ def encode_np(array):
     np.save(bio, array)
     return base64.standard_b64encode(bio.getvalue())
 
+def decode_np(text):
+    bio = io.BytesIO(base64.standard_b64decode(text))
+    return np.load(bio)
+
 
 def round(value, factor):
     return int(value.astype(float) * factor) / factor
 
 rgb_small_frame = face_img[:, :, ::-1]
 faces = model.get(rgb_small_frame)
-
+print(faces)
 result = {"numberOfFaces": len(faces),
             "faces": [
                 {
