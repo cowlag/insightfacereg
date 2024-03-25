@@ -2,6 +2,9 @@ import torch
 import insightface
 import cv2
 
+import base64
+import numpy as np
+import io
 
 img = 'img/1.jpg'
 model = insightface.app.FaceAnalysis()
@@ -10,6 +13,11 @@ face_img = cv2.imread(img)
 
 
 # res = model.get(face_img)
+
+def encode_np(array):
+    bio = io.BytesIO()
+    np.save(bio, array)
+    return base64.standard_b64encode(bio.getvalue())
 
 
 rgb_small_frame = face_img[:, :, ::-1]
