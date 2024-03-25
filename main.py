@@ -3,7 +3,7 @@ import insightface
 import cv2
 
 
-img = '/kaggle/input/insightface1101/1.jpg'
+img = 'img/1.jpg'
 model = insightface.app.FaceAnalysis()
 model.prepare(ctx_id=0, det_thresh=0.45)
 face_img = cv2.imread(img)
