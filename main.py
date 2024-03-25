@@ -29,7 +29,7 @@ def round(value, factor):
 
 rgb_small_frame = face_img[:, :, ::-1]
 faces = model.get(rgb_small_frame)
-print(faces)
+# print(faces)
 result = {"numberOfFaces": len(faces),
             "faces": [
                 {
@@ -66,7 +66,37 @@ result = {"numberOfFaces": len(faces),
             ]
         }
 
-print(result)
+# print(result)
+
+
+lms68_3D = faces[0]['landmark_3d_68'][:, [1, 0 ,2]]
+lms68_3D = faces[0]['landmark_3d_68'][:, [1, 0 ,2]]
+lms5 = lms68_3D[[36, 45, 30, 48, 54]][:, [0, 1]]
+lms5[0] = lms68_3D[36:42].mean(axis=0)[[0, 1]]
+lms5[1] = lms68_3D[42:48].mean(axis=0)[[0, 1]]
+# pack results
+item = {path: {'lms68': lms68_3D, 'lms5': lms5}}
+print(item)
+
+
+item2 = {
+    'face': {
+        # for inference at least one of the bellow sets of face lms must be available
+        'xy5': lms5.astype(np.float16),
+        'xyz68': lms68_3D.astype(np.float16),
+        'head_pose': np.array([0, 0]).astype(np.float16)
+    }
+}
+
+print(item2)
+
+
+
+
+
+
+
+
 # print('人脸数量：', len(res))
 # print("#"*100)
 # print('res keys: ', res[0].keys())  # 结果包括 ['bbox', 'kps', 'det_score', 'landmark_3d_68', 'pose', 'landmark_2d_106', 'gender', 'age', 'embedding']
