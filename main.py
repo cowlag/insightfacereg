@@ -75,7 +75,7 @@ lms5 = lms68_3D[[36, 45, 30, 48, 54]][:, [0, 1]]
 lms5[0] = lms68_3D[36:42].mean(axis=0)[[0, 1]]
 lms5[1] = lms68_3D[42:48].mean(axis=0)[[0, 1]]
 # pack results
-item = {path: {'lms68': lms68_3D, 'lms5': lms5}}
+item = {"path": {'lms68': lms68_3D, 'lms5': lms5}}
 print(item)
 
 
