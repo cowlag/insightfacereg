@@ -20,6 +20,9 @@ def encode_np(array):
     return base64.standard_b64encode(bio.getvalue())
 
 
+def round(value, factor):
+    return int(value.astype(float) * factor) / factor
+
 rgb_small_frame = face_img[:, :, ::-1]
 faces = model.get(rgb_small_frame)
 
