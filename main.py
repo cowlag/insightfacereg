@@ -82,9 +82,9 @@ print(item)
 item2 = {
     'face': {
         # for inference at least one of the bellow sets of face lms must be available
-        'xy5': lms5.astype(np.float16),
-        'xyz68': lms68_3D.astype(np.float16),
-        'head_pose': np.array([0, 0]).astype(np.float16)
+        'xy5': lms5.astype(np.float32),
+        'xyz68': lms68_3D.astype(np.float32),
+        'head_pose': np.array([0, 0]).astype(np.float32)
     }
 }
 
